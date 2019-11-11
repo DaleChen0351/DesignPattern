@@ -57,7 +57,7 @@ public:
 
 class SalesOrder {
 	TaxStrategy* myStrategy;
-	Context myContext;// 参数
+	Context myContext;// 参数可以修改
 public:
 	SalesOrder()
 	{
