@@ -4,6 +4,26 @@
 #include "pch.h"
 #include <iostream>
 
+class ISgnlQualityDetector
+{
+public:
+	virtual bool LongTermInvaildCondtion() = 0;
+	virtual bool ShortTermInvaildCondtion() = 0;
+    virtual bool VaildSignalAtCurCycle() = 0;
+    virtual bool InVaildSignalAtCurCycle() = 0;
+	~ISgnlQualityDetector();
+};
+
+
+// 主体类：
+class TrackingDetector:public ISgnlQualityDetector
+{
+
+};
+
+
+
+
 int main()
 {
     std::cout << "Hello World!\n"; 
