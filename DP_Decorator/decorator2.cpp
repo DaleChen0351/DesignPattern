@@ -107,7 +107,7 @@ void Process(){
     
     BufferedStream* s3=new BufferedStream(s1);
     
-    BufferedStream* s4=new BufferedStream(s2); // 即加密又缓存
+    BufferedStream* s4=new BufferedStream(s2); // 先加密再缓存   注意 是 buffered 而不是 buffer
     
     
 

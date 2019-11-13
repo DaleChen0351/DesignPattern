@@ -4,29 +4,18 @@
 #include "pch.h"
 #include <iostream>
 
-class ISgnlQualityDetector
-{
-public:
-	virtual bool LongTermInvaildCondtion() = 0;
-	virtual bool ShortTermInvaildCondtion() = 0;
-    virtual bool VaildSignalAtCurCycle() = 0;
-    virtual bool InVaildSignalAtCurCycle() = 0;
-	~ISgnlQualityDetector();
-};
-
-
-// 主体类：
-class TrackingDetector:public ISgnlQualityDetector
-{
-
-};
-
-
-
-
 int main()
 {
     std::cout << "Hello World!\n"; 
+	ISgnlQualityDetector* s1 = new TrackingDetector;// 等号左边的指针不重要，定义成基类还是子类的指针都可以
+	ISgnlQualityDetector* s2 = new PMWDetector;
+	
+
+	ISgnlQualityDetector* s3 = new Expandclass(s1);// 也可以多层装饰
+	s3->LongTermInvaildCondtion();
+	s3->VaildSignalAtCurCycle();
+
+
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
