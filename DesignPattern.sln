@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DP_MyPaint", "DP_MyPaint\DP_MyPaint.vcxproj", "{EDA12BC3-5E6C-4AE1-B542-CD298A5C8EBC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01_DP_MyPaint", "DP_MyPaint\DP_MyPaint.vcxproj", "{EDA12BC3-5E6C-4AE1-B542-CD298A5C8EBC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DP_Strategy", "DP_Strategy\DP_Strategy.vcxproj", "{3DB499C3-46C9-40A8-9B91-60D450B78A04}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02_DP_Strategy", "DP_Strategy\DP_Strategy.vcxproj", "{3DB499C3-46C9-40A8-9B91-60D450B78A04}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DP_Observer", "DP_Observer\DP_Observer.vcxproj", "{2EA2550F-F3E4-44B6-B2E9-E66E50CCD5E8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "03_DP_Observer", "DP_Observer\DP_Observer.vcxproj", "{2EA2550F-F3E4-44B6-B2E9-E66E50CCD5E8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DP_Decorator", "DP_Decorator\DP_Decorator.vcxproj", "{3D39F165-966C-452A-B11B-DB2E1AFF6991}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "04_DP_Decorator", "DP_Decorator\DP_Decorator.vcxproj", "{3D39F165-966C-452A-B11B-DB2E1AFF6991}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

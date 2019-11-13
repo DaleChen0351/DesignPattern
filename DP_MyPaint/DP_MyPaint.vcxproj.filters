@@ -29,10 +29,10 @@
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="DP_MyPaint.cpp">
+    <ClCompile Include="MainForm.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MainForm.cpp">
+    <ClCompile Include="main_MyPaint.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
