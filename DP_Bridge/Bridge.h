@@ -1,165 +1,74 @@
 #ifndef _BRIDGE_H_
 #define _BRIDGE_H_
 using namespace std;
-class Messager {
-public:
-	// 业务逻辑层面可能出现的变化
-	virtual void Login(string username, string password) = 0;
-	virtual void SendMessage(string message) = 0;
-	virtual void SendPicture( ) = 0;
-	// 平台逻辑层面可能出现的变化
-	virtual void PlaySound() = 0;
-	virtual void DrawShape() = 0;
-	virtual void WriteText() = 0;
-	virtual void Connect() = 0;
 
-	virtual ~Messager() {}
+// Implementor
+class IPaymentSystem
+{
+public:
+	virtual void ProcessPayment(string paymentSystem) = 0;
+	~IPaymentSystem() {};
 };
 
-
-//平台实现
-class PCMessagerBase : public Messager {
+// ConcreteImplementor
+class CityPaymentSystem :public IPaymentSystem
+{
 public:
-
-	virtual void PlaySound() {
-		//**********
-	}
-	virtual void DrawShape() {
-		//**********
-	}
-	virtual void WriteText() {
-		//**********
-	}
-	virtual void Connect() {
-		//**********
+	virtual void ProcessPayment(string paymentSystem)
+	{
+		std::cout << "using Citybank gateway for " << paymentSystem << std::endl;
 	}
 };
-
-class MobileMessagerBase : public Messager {
+class IDBAPaymentSystem :public IPaymentSystem
+{
 public:
-
-	virtual void PlaySound() {
-		//==========
-	}
-	virtual void DrawShape() {
-		//==========
-	}
-	virtual void WriteText() {
-		//==========
-	}
-	virtual void Connect() {
-		//==========
+	virtual void ProcessPayment(string paymentSystem)
+	{
+		std::cout << "using IDBA gateway for " << paymentSystem << std::endl;
 	}
 };
-
-
-//业务抽象
-// 轻量级
-class PCMessagerLite {
-	Messager * Messager;
+// Abstraction
+class Payment
+{
 public:
-	
-	virtual void Login(string username, string password) {
+	IPaymentSystem* m_Ipayment;
+public:
+	virtual void MakePayment() = 0;
+	~Payment() { delete m_Ipayment; }
+};
 
-		Messager->Connect();
-		//........
+// RefinedAbstraction
+class CardPayment :public Payment
+{
+public:
+	virtual void MakePayment()
+	{
+		m_Ipayment->ProcessPayment("Card Payment");
 	}
-	virtual void SendMessage(string message) {
-
-		Messager->WriteText();
-		//........
-	}
-	virtual void SendPicture( ) {
-
-		Messager->DrawShape();
-		//........
+};
+class NetBankPayment :public Payment
+{
+public:
+	virtual void MakePayment()
+	{
+		m_Ipayment->ProcessPayment("NetBank Payment");
 	}
 };
 
-class MobileMessagerLite  {
-	Messager* Messager;
-public:
-
-	virtual void Login(string username, string password) {
-
-		Messager->Connect();
-		//........
-	}
-	virtual void SendMessage(string message) {
-
-		Messager->WriteText();
-		//........
-	}
-	virtual void SendPicture() {
-
-		Messager->DrawShape();
-		//........
-	}
-};
-
-// 完全版 
-class PCMessagerPerfect : public PCMessagerBase {
-public:
-
-	virtual void Login(string username, string password) {
-
-		PCMessagerBase::PlaySound(); // 完全版 增加了播放声音
-		//********
-		PCMessagerBase::Connect();
-		//........
-	}
-	virtual void SendMessage(string message) {
-
-		PCMessagerBase::PlaySound();
-		//********
-		PCMessagerBase::WriteText();
-		//........
-	}
-	virtual void SendPicture() {
-
-		PCMessagerBase::PlaySound();
-		//********
-		PCMessagerBase::DrawShape();
-		//........
-	}
-};
+// 分别往两个维度的变化，可进行排列组合的情况下，一个维度是抽象的维度，另一个是具体实施的维度。
 
 
+// 完成 一件事 需要抽象的几个步骤，具体有多种实现方式和组合方式
 
+// 买东西 抽象 ： 去  买 回
+// 抽象的refined省钱    
+// 抽象的费钱模式
 
+// WaysOfRunning go  and back
+// WaysOfPayment
+//  打车去 打车回 现金支付
+// 走路去 走路回  用花呗支付
 
-class MobileMessagerPerfect : public MobileMessagerBase {
-public:
-
-	virtual void Login(string username, string password) {
-
-		MobileMessagerBase::PlaySound();
-		//********
-		MobileMessagerBase::Connect();
-		//........
-	}
-	virtual void SendMessage(string message) {
-
-		MobileMessagerBase::PlaySound();
-		//********
-		MobileMessagerBase::WriteText();
-		//........
-	}
-	virtual void SendPicture() {
-
-		MobileMessagerBase::PlaySound();
-		//********
-		MobileMessagerBase::DrawShape();
-		//........
-	}
-};
-
-
-void Process() {
-	//编译时装配
-	Messager *m =
-		new MobileMessagerPerfect();
-}
 
 
 

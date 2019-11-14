@@ -7,6 +7,31 @@
 int main()
 {
     std::cout << "Hello World!\n"; 
+
+	//Payment*  p = new NetBankPayment(); // for end customer
+	//p->m_Ipayment = new CityPaymentSystem(); // for bank 
+	//p->MakePayment();
+
+	Tracking* tr;
+	tr = new NewTracking();
+	tr->m_imp = new KF_HM_Exp();
+	tr->m_imp = new RadarMeasement(tr->m_imp);// 装饰类
+	
+
+	tr->Association();
+	tr->AssignedTrack();
+	tr->CreateNewTrack();
+
+	std::cout<<""<<std::endl;
+	tr->m_imp = new UKF_Matrix_Exp();
+	tr->Association();
+	tr->AssignedTrack();
+
+	
+
+
+
+
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

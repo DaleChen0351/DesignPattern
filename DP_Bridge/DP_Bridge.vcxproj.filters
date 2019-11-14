@@ -21,18 +21,15 @@
     <ClInclude Include="Bridge.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Bridge_SensorFusion.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="bridge1.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="bridge2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
