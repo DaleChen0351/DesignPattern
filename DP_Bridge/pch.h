@@ -13,5 +13,6 @@
 #include <iostream>
 #include <string>
 #include "Bridge.h"
+#include "Bridge_SensorFusion.h"
 
 #endif //PCH_H
