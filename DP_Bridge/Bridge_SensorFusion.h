@@ -93,7 +93,7 @@ class UKF_Matrix_Exp :public Implementor
 public:
 	virtual void Prediction()
 	{
-		std::cout << "KF prediction" << std::endl;
+		std::cout << "UKF prediction" << std::endl;
 	}
 	virtual void Measurement()
 	{
@@ -101,7 +101,7 @@ public:
 	}
 	virtual void Update()
 	{
-		std::cout << "KF update" << std::endl;
+		std::cout << "ukf update" << std::endl;
 	}
 	virtual void CalcSimul()
 	{
@@ -112,26 +112,27 @@ public:
 		std::cout << "Matrix match" << std::endl;
 	}
 };
-
+// 继承关系
 class UKF_ImageMease_Exp :public UKF_Matrix_Exp
 {
-	virtual void Measurement()
+	virtual void Measurement() // 父类对子类的同名覆盖
 	{
 		std::cout << "ImageObj Measurement" << std::endl;
 	}
 };
-
+// Decorator: 既是 is-a 又是 has-a
 class RadarMeasement:public Implementor
 {
 public:
 	Implementor* m_Isgnl;
 
 	RadarMeasement(Implementor* pimp) : m_Isgnl(pimp) {};
-	virtual void Measurement()
+	virtual void Measurement() // 装饰工作
 	{
 		m_Isgnl->Measurement();
 		std::cout << "RaadarObj Measurement" << std::endl;
 	}
+	// 是否需要将所有接口全部实现？是的，必须全部实现，因为是抽象基类，如果不全部实现，若被调用到会报错的
 	virtual void Prediction()
 	{
 		m_Isgnl->Prediction();

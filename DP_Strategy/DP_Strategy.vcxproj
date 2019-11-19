@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Strategy.h" />
+    <ClInclude Include="Strategy_sensor_fusion.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DP_Strategy.cpp" />

@@ -10,6 +10,7 @@ public:
 	~IPaymentSystem() {};
 };
 
+
 // ConcreteImplementor
 class CityPaymentSystem :public IPaymentSystem
 {
@@ -28,11 +29,12 @@ public:
 	}
 };
 // Abstraction
-class Payment
+class Payment // 基类是不可以直接生成对象的，只能生成基类指针
 {
+protected:
+	IPaymentSystem* m_Ipayment; 
 public:
-	IPaymentSystem* m_Ipayment;
-public:
+	Payment(IPaymentSystem* Ipayment) : m_Ipayment(Ipayment) {};
 	virtual void MakePayment() = 0;
 	~Payment() { delete m_Ipayment; }
 };
@@ -41,14 +43,17 @@ public:
 class CardPayment :public Payment
 {
 public:
+	CardPayment(IPaymentSystem* Ipayment) :Payment(Ipayment) {}; // 即使是protected， 使用之前需要先调用基类的构造函数
 	virtual void MakePayment()
 	{
 		m_Ipayment->ProcessPayment("Card Payment");
 	}
+	// 析构函数的继承调度？
 };
 class NetBankPayment :public Payment
 {
 public:
+	NetBankPayment(IPaymentSystem *Ipayment) : Payment(Ipayment) {};
 	virtual void MakePayment()
 	{
 		m_Ipayment->ProcessPayment("NetBank Payment");
@@ -59,15 +64,6 @@ public:
 
 
 // 完成 一件事 需要抽象的几个步骤，具体有多种实现方式和组合方式
-
-// 买东西 抽象 ： 去  买 回
-// 抽象的refined省钱    
-// 抽象的费钱模式
-
-// WaysOfRunning go  and back
-// WaysOfPayment
-//  打车去 打车回 现金支付
-// 走路去 走路回  用花呗支付
 
 
 

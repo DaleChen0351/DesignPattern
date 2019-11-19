@@ -41,7 +41,7 @@ public:
 };
 
 // 扩展 装饰    其实相当于是对继承自基类的所有子类都可以进行二次修饰 
-// is a : 符合接口规范
+// is a : 是为了符合接口规范
 // has a : 获得需要修饰的对象输入 。（输出是经过修饰后的新的对象类型）
 class Expandclass : public ISgnlQualityDetector
 {
