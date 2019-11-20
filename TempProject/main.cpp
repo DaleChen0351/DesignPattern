@@ -23,9 +23,7 @@ class Derived:public Base
 public:
 	void myfunction()
 	{
-		Derived son;
-		son.j = 1; // ? why is there not needed the currrent object yet?
-		std::cout << son.j << std::endl;
+		
 	}
 };
 
@@ -62,9 +60,10 @@ public:
 	void print_bug()
 	{
 		Flybug b(20, 30,40);
-		b.Bug::print_bug(); // protected 在子类中，及相当于是子类的private 成员，而类对象之间是互为友元的，因此
+		b.Bug::print_bug(); // protected对象 在子类中，及相当于是子类的private 成员，而类对象之间是互为友元的，因此
 		b.m_wings = 3;  // private 成员函数及变量是可以修改和调用的。
-		Bug::print_bug();
+		
+		 Bug::print_bug();
 		std::cout << m_wings << std::endl;
 	}
 };

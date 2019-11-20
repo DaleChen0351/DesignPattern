@@ -8,8 +8,10 @@ int main()
 {
     std::cout << "Hello World!\n"; 
 
-	//Payment*  p = new NetBankPayment(new CityPaymentSystem()); // for end customer and for bank
-	//p->MakePayment();
+	Payment*  p = new NetBankPayment(new CityPaymentSystem()); // for end customer and for bank
+	p->MakePayment();
+
+	delete p;
 
 	//Payment* p2 = new CardPayment(new IDBAPaymentSystem());
 	//p2->MakePayment();
@@ -17,20 +19,20 @@ int main()
 
 
  //bridge sensor fusion
-	Tracking* tr;
-	tr = new NewTracking();
-	tr->m_imp = new KF_HM_Exp();
-	tr->m_imp = new RadarMeasement(tr->m_imp);// 装饰类
-	
+	//Tracking* tr;
+	//tr = new NewTracking();
+	//tr->m_imp = new KF_HM_Exp();
+	//tr->m_imp = new RadarMeasement(tr->m_imp);// 装饰类
+	//
 
-	tr->Association();
-	tr->AssignedTrack();
-	tr->CreateNewTrack();
+	//tr->Association();
+	//tr->AssignedTrack();
+	//tr->CreateNewTrack();
 
-	std::cout<<""<<std::endl;
-	tr->m_imp = new UKF_Matrix_Exp();
-	tr->Association();
-	tr->AssignedTrack();
+	//std::cout<<""<<std::endl;
+	//tr->m_imp = new UKF_Matrix_Exp();
+	//tr->Association();
+	//tr->AssignedTrack();
 
 	
 

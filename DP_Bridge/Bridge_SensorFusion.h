@@ -10,7 +10,8 @@ public:
 	virtual void Update() = 0;
 	virtual void CalcSimul() = 0;
 	virtual void Match() = 0; // hm匹配 或者 矩阵匹配
-	~Implementor() {};
+	virtual ~Implementor() {}; // 基类的析构函数是必须写的，且是virtual的。
+	virtual std::string Name() const = 0;
 };
 
 // Abstraction 
@@ -18,6 +19,8 @@ class Tracking
 {
 public:
 	Implementor* m_imp;
+
+	Tracking() : m_name("BaseTracking"){}
 	virtual void Association() = 0;
 	virtual void AssignedTrack() = 0;
 	virtual void UnassignedTrack() {
@@ -30,6 +33,17 @@ public:
 	virtual void DeleteOneTrack() {
 		std::cout << "DeleteOneTrack" << std::endl;
 	}
+
+	
+	virtual ~Tracking()
+	{
+		if (m_imp != nullptr)
+		{
+			delete m_imp;
+		}
+	}
+protected:
+	std::string m_name; // 写一个名字，方便后面的调试
 };
 
 
@@ -37,6 +51,10 @@ public:
 class BasicTracking : public Tracking
 {
 public:
+
+	BasicTracking() {
+		m_name = "BasicTracking";
+	}
 	virtual void Association()
 	{
 		m_imp->Measurement();
@@ -48,6 +66,7 @@ public:
 	{
 		m_imp->Update();
 	}
+	
 };
 // 可扩展性啊
 class NewTracking : public BasicTracking
@@ -66,23 +85,27 @@ public:
 class KF_HM_Exp :public Implementor
 {
 public:
-	virtual void Prediction()
+	virtual std::string Name() const override
+	{
+		return "KF_HM_Exp";
+	}
+	virtual void Prediction() override 
 	{
 		std::cout << "KF prediction" << std::endl;
 	}
-	virtual void Measurement()
+	virtual void Measurement() override 
 	{
 		std::cout << "Normal Measurement" << std::endl;
 	}
-	virtual void Update()
+	virtual void Update() override 
 	{
 		std::cout << "KF update" << std::endl;
 	}
-	virtual void CalcSimul()
+	virtual void CalcSimul() override
 	{
 		std::cout << "Exp CalcSimul"<<std::endl;
 	}
-	virtual void Match() 	// hm匹配 或者 矩阵匹配
+	virtual void Match() override 	// hm匹配 或者 矩阵匹配
 	{
 		std::cout << "HM match" << std::endl;
 	}
@@ -91,23 +114,27 @@ public:
 class UKF_Matrix_Exp :public Implementor
 {
 public:
-	virtual void Prediction()
+	virtual std::string Name() const override
+	{
+		return "UKF_Matrix_Exp";
+	}
+	virtual void Prediction() override 
 	{
 		std::cout << "UKF prediction" << std::endl;
 	}
-	virtual void Measurement()
+	virtual void Measurement() override 
 	{
 		std::cout << "Normal Measurement" << std::endl;
 	}
-	virtual void Update()
+	virtual void Update() override 
 	{
 		std::cout << "ukf update" << std::endl;
 	}
-	virtual void CalcSimul()
+	virtual void CalcSimul() override 
 	{
 		std::cout << "Exp CalcSimul" << std::endl;
 	}
-	virtual void Match() 	// hm匹配 或者 矩阵匹配
+	virtual void Match() override 	// hm匹配 或者 矩阵匹配
 	{
 		std::cout << "Matrix match" << std::endl;
 	}
@@ -124,9 +151,13 @@ class UKF_ImageMease_Exp :public UKF_Matrix_Exp
 class RadarMeasement:public Implementor
 {
 public:
-	Implementor* m_Isgnl;
+	Implementor* m_Isgnl; // 注意析构函数
 
 	RadarMeasement(Implementor* pimp) : m_Isgnl(pimp) {};
+	virtual std::string Name() const override
+	{
+		return "RadarMeasement";
+	}
 	virtual void Measurement() // 装饰工作
 	{
 		m_Isgnl->Measurement();
