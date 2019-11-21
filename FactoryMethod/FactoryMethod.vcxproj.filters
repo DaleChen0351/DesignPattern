@@ -35,24 +35,6 @@
     <ClCompile Include="FactoryMethod.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="origincode\FileSplitter1.cpp">
-      <Filter>源文件\origincode</Filter>
-    </ClCompile>
-    <ClCompile Include="origincode\FileSplitter2.cpp">
-      <Filter>源文件\origincode</Filter>
-    </ClCompile>
-    <ClCompile Include="origincode\ISplitterFactory.cpp">
-      <Filter>源文件\origincode</Filter>
-    </ClCompile>
-    <ClCompile Include="origincode\MainForm1.cpp">
-      <Filter>源文件\origincode</Filter>
-    </ClCompile>
-    <ClCompile Include="origincode\MainForm2.cpp">
-      <Filter>源文件\origincode</Filter>
-    </ClCompile>
-    <ClCompile Include="Observer.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Subject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>

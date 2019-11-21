@@ -4,52 +4,61 @@
 //#include <list>
 
 
-//// 抽象的接口
-//class Interface {
-//public:
-//	virtual void DoProgress(float value) = 0;
-//	virtual ~Interface() {}
-//};
-//
-//class Subject
-//{
-//private:
-//	std::list<Interface*>  m_InterfaceList; // 定义多个抽象基类指针。实现抽象通知机制，支持多个抽象观察者
-//
-//public:
-//	void Run();
-//	void Attach(Interface* iprogress);// 增加观察者
-//	void Detach(Interface* iprogress);
-//	~Subject();
-//
-//protected: // 可以被FileSplitter子类继承
-//	virtual void Notify(float value);
-//};
-
-
-
-
 class ISubject
 {
 protected:
-	std::list<Interface*> m_InterfaceList;
+	std::list<BaseObserver*> m_InterfaceList;
 public:
-	virtual void Attach(Interface* iprogress) ;
-	virtual void Detach(Interface* iprogress) ;
-	virtual void Run();
-	~ISubject() {};
-protected:
-	virtual void Notify(float value);// 
+	virtual void Attach(BaseObserver* baseObs) ;
+	virtual void Detach(BaseObserver* baseObs) ;
+	virtual void Run() = 0;
+	virtual ~ISubject(); // 基类必须是虚函数
+	virtual void Notify(std::string str) ; // 遍历订阅者
 };
 
-class FootBallSub :public ISubject
+class FootballSub : public ISubject
 {
 public:
 	virtual void Run()
 	{
-		
+		Notify("Football match news");
 	}
 };
+
+class GlobalNewsSub : public ISubject
+{
+public:
+	virtual void Run()
+	{
+		Notify("Global economic news");
+	}
+};
+
+//工厂基类
+class SubjectFactory {
+public:
+	virtual ISubject* CreateSubject() = 0;
+	virtual ~SubjectFactory() {};
+};
+// 工厂派生类
+class FootballFactory : public SubjectFactory
+{
+public:
+	virtual ISubject* CreateSubject()
+	{
+		return new FootballSub();
+	}
+};
+class GlobalFactory : public SubjectFactory
+{
+public:
+	virtual ISubject* CreateSubject()
+	{
+		return new GlobalNewsSub();
+	}
+};
+
+
 
 
 

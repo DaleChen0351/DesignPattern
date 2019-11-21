@@ -4,9 +4,39 @@
 #include "pch.h"
 #include <iostream>
 
+
+void testforfactory(SubjectFactory* factory)
+{
+	// 利用工厂模式生成一个订阅主题
+	ISubject* sub;
+	sub = factory->CreateSubject(); // new 出的对象 
+	// 生成两个观察者
+	MainForm* m = new MainForm ;
+	ConsoleNotifier* cn = new ConsoleNotifier;// 另外一个观察者
+
+	sub->Attach(m); //订阅通知  毕竟MainForm 继承了IProgress接口之后，也算是一个IProgress的子类了
+	sub->Attach(cn); //订阅通知
+	sub->Run();
+	// 取消订阅
+	sub->Detach(m);
+	// sub->Detach(cn);
+
+    delete sub;
+	delete m;
+	delete cn;
+}
+
+
+
+
+
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	std::cout << "Hello World!\n";
+	FootballFactory f;
+	GlobalFactory g;
+	testforfactory(&f);
+	testforfactory(&g);
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

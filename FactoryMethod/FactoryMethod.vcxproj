@@ -158,12 +158,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FactoryMethod.cpp" />
-    <ClCompile Include="Observer.cpp" />
-    <ClCompile Include="origincode\FileSplitter1.cpp" />
-    <ClCompile Include="origincode\FileSplitter2.cpp" />
-    <ClCompile Include="origincode\ISplitterFactory.cpp" />
-    <ClCompile Include="origincode\MainForm1.cpp" />
-    <ClCompile Include="origincode\MainForm2.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

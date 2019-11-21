@@ -1,27 +1,31 @@
 #ifndef _OBSERVER_H_
 #define _OBSERVER_H_
 
-class Interface // 观察者的基类
+class BaseObserver // 观察者的基类
 {
+protected:
+	std::string name_;
 public:
-	virtual void DoProgress(float value) = 0;
-	virtual ~Interface() {};// 必须是虚的析构函数
+	BaseObserver() : name_("BaseObserver") {}
+	virtual void DoProgress(std::string str) = 0;
+	virtual ~BaseObserver() {};// 必须是虚的析构函数
 };
 // 这是另外一个观察者，继承了接口
-class ConsoleNotifier : public Interface {
+class ConsoleNotifier : public BaseObserver {
 public:
-	virtual void DoProgress(float value) {
-		std::cout << "This is a consoleNotifier !   the value is   " << value << std::endl;
+	ConsoleNotifier() { name_ = "ConsoleNotifier"; }
+	virtual void DoProgress(std::string str) {
+		std::cout <<name_.c_str()<<"  received : "<< str.c_str()<< std::endl;
 	}
 };
 
-class MainForm : public Interface  // 单继承真正的父类，及多个接口
+class MainForm : public BaseObserver  // 单继承真正的父类，及多个接口
 {
 
 public:
-// 继承IProgress 接口必须实现的函数
-	virtual void DoProgress(float value) {
-		std::cout << "This is a progress bar!   the value is   " << value << std::endl;
+	MainForm() { name_ = "MainForm"; }
+	virtual void DoProgress(std::string str) {
+		std::cout << name_.c_str() << "  received : " << str.c_str() << std::endl;
 	}
 };
 

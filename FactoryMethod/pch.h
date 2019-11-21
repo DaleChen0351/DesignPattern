@@ -11,7 +11,9 @@
 
 // TODO: 添加要在此处预编译的标头
 #include <list>
-#include "Subject.h"
+#include <iostream>
 #include "Observer.h"
+#include "Subject.h"
+
 
 #endif //PCH_H
