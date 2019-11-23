@@ -46,7 +46,7 @@ class FootballFactory : public SubjectFactory
 public:
 	virtual ISubject* CreateSubject()
 	{
-		return new FootballSub();
+		return new FootballSub(); // 如果希望是带有不同参数的构造，那么该怎么设计工厂类呢？
 	}
 };
 class GlobalFactory : public SubjectFactory
