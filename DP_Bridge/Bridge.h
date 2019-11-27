@@ -8,8 +8,8 @@ class IPaymentSystem
 public:
 	virtual void ProcessPayment(string paymentSystem) = 0;
 	virtual ~IPaymentSystem() {  
-		std::cout << "base IPaymentSystem dtor" << std::endl;
-	};
+		std::cout << "base IPaymentSystem dtor" << std::endl;// 基类中析构函数必须是virtual的，这样可以保证多态调用到子类的析构函数，
+	}; // 再通过子类的析构函数自动调用基类的析构函数
 };
 
 

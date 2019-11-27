@@ -7,7 +7,7 @@
 int main()
 {
     std::cout << "Hello World!\n"; 
-	//Singleton* = Singleton::getInstance();
+	Singleton* mySing = Singleton::getInstance();
 }
 
 
