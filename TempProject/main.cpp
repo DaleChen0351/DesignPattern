@@ -5,6 +5,7 @@
 #include <iostream>
 
 
+
 class Base
 {
 protected:
@@ -72,9 +73,12 @@ int main()
 {
 	
 	std::cout << "Hello World!\n"; 
-	Flybug f(2, 3, 4);
-	f.print_bug();
-	//f.Bug::print_bug(); // 调用基类的print_bug函数
+	
+	std::unique_ptr<Bug> m_ptr = std::make_unique<Bug>();
+	//std::unique_ptr<Bug> m_cp = m_ptr;
+
+	
+
 }
 
 // 1 若父类和子类的同名函数都是public的，则均可在外部调用
