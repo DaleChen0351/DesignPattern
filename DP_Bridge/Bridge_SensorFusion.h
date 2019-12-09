@@ -53,7 +53,7 @@ class BasicTracking : public Tracking
 public:
 
 	BasicTracking() {
-		m_name = "BasicTracking";
+		m_name = "BasicTracking";// 不可以放到初始化列表里面，因为基类先构造
 	}
 	virtual void Association()
 	{

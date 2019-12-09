@@ -4,27 +4,7 @@
 //#include <list>
 
 
-//// 抽象的接口
-//class Interface {
-//public:
-//	virtual void DoProgress(float value) = 0;
-//	virtual ~Interface() {}
-//};
-//
-//class Subject
-//{
-//private:
-//	std::list<Interface*>  m_InterfaceList; // 定义多个抽象基类指针。实现抽象通知机制，支持多个抽象观察者
-//
-//public:
-//	void Run();
-//	void Attach(Interface* iprogress);// 增加观察者
-//	void Detach(Interface* iprogress);
-//	~Subject();
-//
-//protected: // 可以被FileSplitter子类继承
-//	virtual void Notify(float value);
-//};
+
 
 
 
@@ -37,7 +17,7 @@ public:
 class Subject
 {
 private:
-	std::list<Interface*> m_InterfaceList;
+	std::list<Interface*> m_InterfaceList;// 析构函数？
 public:
 	void Attach(Interface* iprogress);
 	void Detach(Interface* iprogress);

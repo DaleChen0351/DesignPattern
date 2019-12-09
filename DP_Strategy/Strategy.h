@@ -61,7 +61,7 @@ class SalesOrder {
 public:
 	SalesOrder()
 	{
-		myStrategy = new US_Tax; // 如果有工厂模式，这里可以使用工厂模式
+		myStrategy = new US_Tax; // 如果有工厂模式，这里可以使用工厂模式，构造本类的时候已经确定了策略的类型，和模板类的区别
 
 	}
 	double CalculateTax() {
