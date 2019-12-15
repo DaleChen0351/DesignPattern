@@ -40,7 +40,7 @@
 //		itor++;
 //	}
 //}
-
+// 使用list可以很方便的维护一个需要频繁插入或者删除的队列。
 void Subject::Attach(Interface* iprogress)
 {
 	m_InterfaceList.push_back(iprogress);
@@ -48,7 +48,7 @@ void Subject::Attach(Interface* iprogress)
 
 void Subject::Detach(Interface* iprogress)
 {
-	m_InterfaceList.remove(iprogress);
+	m_InterfaceList.remove(iprogress);// 时间复杂度On的
 }
 
 void Subject::Notify(float value)
