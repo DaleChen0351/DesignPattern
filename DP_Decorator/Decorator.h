@@ -6,7 +6,7 @@ class ISgnlQualityDetector
 public:
 	virtual void LongTermInvaildCondtion() = 0; // 判断信号长期有效的条件
 	virtual void VaildSignalAtCurCycle() = 0; // 判断该信号当前周期是否有效
-	~ISgnlQualityDetector();
+	virtual ~ISgnlQualityDetector() {};
 };
 
 

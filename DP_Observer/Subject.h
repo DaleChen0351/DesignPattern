@@ -22,7 +22,7 @@ public:
 	void Attach(Interface* iprogress);
 	void Detach(Interface* iprogress);
 	void Run();
-	~Subject();
+	virtual ~Subject();
 protected:
 	virtual void Notify(float value);// ¿É±»¼Ì³Ð
 };
